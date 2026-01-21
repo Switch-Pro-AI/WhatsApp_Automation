@@ -21,8 +21,6 @@ export interface Tenant {
   name: string
   slug: string
   plan: string
-  whatsapp_phone_number_id: string | null
-  whatsapp_business_account_id: string | null
 }
 
 export async function hashPassword(password: string): Promise<string> {
@@ -75,8 +73,7 @@ export async function getCurrentTenant(): Promise<Tenant | null> {
   if (!user) return null
 
   const tenant = await queryOne<Tenant>(
-    `SELECT id, name, slug, plan, whatsapp_phone_number_id, whatsapp_business_account_id 
-     FROM tenants WHERE id = $1`,
+    `SELECT id, name, slug, plan FROM tenants WHERE id = $1`,
     [user.tenant_id]
   )
 

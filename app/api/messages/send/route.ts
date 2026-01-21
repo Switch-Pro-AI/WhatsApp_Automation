@@ -20,17 +20,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get conversation with contact info
+    // Get conversation with contact info and WhatsApp account
     const conversationResult = await sql`
       SELECT 
         c.id,
         c.contact_id,
+        c.whatsapp_account_id,
         co.phone as contact_phone,
-        t.whatsapp_phone_number_id,
-        t.whatsapp_access_token
+        wa.phone_number_id as whatsapp_phone_number_id,
+        wa.access_token as whatsapp_access_token
       FROM conversations c
       JOIN contacts co ON c.contact_id = co.id
-      JOIN tenants t ON c.tenant_id = t.id
+      LEFT JOIN whatsapp_accounts wa ON c.whatsapp_account_id = wa.id
       WHERE c.id = ${conversationId} AND c.tenant_id = ${session.tenantId}
     `;
 
@@ -46,7 +47,7 @@ export async function POST(request: NextRequest) {
     // Check if WhatsApp is configured
     if (!conversation.whatsapp_phone_number_id || !conversation.whatsapp_access_token) {
       return NextResponse.json(
-        { error: "WhatsApp is not configured for this tenant" },
+        { error: "WhatsApp is not configured for this conversation" },
         { status: 400 }
       );
     }
