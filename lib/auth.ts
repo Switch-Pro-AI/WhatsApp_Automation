@@ -21,8 +21,8 @@ export interface Tenant {
   name: string
   slug: string
   plan: string
-  whatsapp_phone_number_id: string | null
-  whatsapp_business_account_id: string | null
+  whatsapp_phone_number_id?: string | null
+  whatsapp_business_account_id?: string | null
 }
 
 export async function hashPassword(password: string): Promise<string> {

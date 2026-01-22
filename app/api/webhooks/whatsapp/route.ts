@@ -98,19 +98,21 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
   const { phoneNumberId, message, contact } = payload;
 
   try {
-    // Find the tenant by phone number ID
-    const tenantResult = await sql`
-      SELECT id FROM tenants 
-      WHERE whatsapp_phone_number_id = ${phoneNumberId}
+    // Find the WhatsApp account and tenant by phone number ID
+    const accountResult = await sql`
+      SELECT wa.id as whatsapp_account_id, wa.tenant_id 
+      FROM whatsapp_accounts wa
+      WHERE wa.phone_number_id = ${phoneNumberId}
       LIMIT 1
     `;
 
-    if (tenantResult.length === 0) {
-      console.log("No tenant found for phone number ID:", phoneNumberId);
+    if (accountResult.length === 0) {
+      console.log("No WhatsApp account found for phone number ID:", phoneNumberId);
       return;
     }
 
-    const tenantId = tenantResult[0].id;
+    const tenantId = accountResult[0].tenant_id;
+    const whatsappAccountId = accountResult[0].whatsapp_account_id;
     const senderPhone = message.from;
     const senderName = contact?.profile?.name || "Unknown";
 
@@ -148,8 +150,8 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
     if (conversationResult.length === 0) {
       // Create new conversation
       const newConversation = await sql`
-        INSERT INTO conversations (tenant_id, contact_id, channel, status)
-        VALUES (${tenantId}, ${contactId}, 'whatsapp', 'open')
+        INSERT INTO conversations (tenant_id, contact_id, whatsapp_account_id, status)
+        VALUES (${tenantId}, ${contactId}, ${whatsappAccountId}, 'open')
         RETURNING id
       `;
       conversationId = newConversation[0].id;
