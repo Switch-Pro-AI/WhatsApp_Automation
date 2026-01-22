@@ -178,42 +178,51 @@ const steps = [
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 animate-gradient overflow-x-hidden">
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-10 -left-10 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float-slow"></div>
+        <div className="absolute top-40 -right-10 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float delay-100"></div>
+        <div className="absolute -bottom-10 left-24 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float-slower delay-200"></div>
+      </div>
+
       {/* Header */}
-      <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <header className="relative z-50 border-b border-white/10 bg-white/5 backdrop-blur-2xl supports-[backdrop-filter]:bg-white/5 sticky top-0">
         <div className="container mx-auto px-4">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-20 items-center justify-between">
             <div className="flex items-center gap-2">
               <Image
-                src="/images/frame-201.png"
-                alt="SwitchPro Logo"
-                width={140}
-                height={40}
-                className="h-8 w-auto"
+                src="/images/Frame 1.png"
+                alt="Company Logo"
+                width={1400}
+                height={700}
+                className="h-20 w-auto object-contain transform hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <nav className="hidden md:flex items-center gap-6">
-              <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <nav className="hidden md:flex items-center gap-8">
+              <a href="#features" className="text-sm text-white/80 hover:text-white transition-all duration-300 font-medium hover:-translate-y-0.5 inline-block">
                 Features
               </a>
-              <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href="#how-it-works" className="text-sm text-white/80 hover:text-white transition-all duration-300 font-medium hover:-translate-y-0.5 inline-block">
                 How It Works
               </a>
-              <a href="#use-cases" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href="#use-cases" className="text-sm text-white/80 hover:text-white transition-all duration-300 font-medium hover:-translate-y-0.5 inline-block">
                 Use Cases
               </a>
-              <a href="#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href="#faq" className="text-sm text-white/80 hover:text-white transition-all duration-300 font-medium hover:-translate-y-0.5 inline-block">
                 FAQ
               </a>
             </nav>
             <div className="flex items-center gap-4">
               <Link href="/login">
-                <Button variant="ghost" className="text-foreground">
+                <Button variant="ghost" className="text-white hover:text-white/90 bg-white/10 hover:bg-white/20 border border-white/20 transition-all duration-300">
                   Log in
                 </Button>
               </Link>
               <Link href="/signup">
-                <Button>Get Started</Button>
+                <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:-translate-y-0.5">
+                  Get Started
+                </Button>
               </Link>
             </div>
           </div>
@@ -221,34 +230,31 @@ export default function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 md:py-32">
+      <section className="relative z-10 py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
-              <MessageSquare className="h-4 w-4 text-primary" />
-              <span className="text-sm text-primary font-medium">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 mb-6 md:mb-8 animate-pulse">
+              <MessageSquare className="h-4 w-4 text-purple-300" />
+              <span className="text-sm text-white/90 font-medium">
                 WhatsApp Customer Service AI
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 text-balance">
-              AI-Powered WhatsApp Conversations That Convert Leads Into Customers
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 md:mb-8 text-balance leading-tight">
+              AI-Powered WhatsApp Conversations That <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Convert Leads Into Customers</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto text-pretty">
-              SwitchPro WhatsApp Chat Agent enables businesses to automate customer conversations, 
-              run Meta ad campaigns, capture leads, and convert them into paying customers using 
-              AI-powered WhatsApp automation.
-            </p>
-            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Manage the full customer journey from ad click to WhatsApp conversation to conversion on a single platform.
+            <p className="text-lg md:text-xl text-white/80 mb-8 md:mb-12 max-w-3xl mx-auto text-pretty">
+              SwitchPro WhatsApp Chat Agent enables businesses to automate customer conversations,
+              run Meta ad campaigns, capture leads, and convert them into paying customers using
+              AI-powered WhatsApp automation. Manage the full customer journey from ad click to WhatsApp conversation to conversion.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/signup">
-                <Button size="lg" className="text-lg px-8 h-14">
+                <Button size="lg" className="text-lg px-8 h-14 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-xl hover:shadow-purple-500/30 transition-all duration-300 group">
                   Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-border bg-transparent">
+              <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur transition-all duration-300 hover:-translate-y-0.5">
                 Book a Demo
               </Button>
             </div>
@@ -257,44 +263,44 @@ export default function LandingPage() {
       </section>
 
       {/* Why SwitchPro Section */}
-      <section className="py-16 border-y border-border bg-secondary/30">
+      <section className="py-16 border-y border-gray-200 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Why SwitchPro WhatsApp Chat Agent
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { 
+              {
                 icon: Globe,
-                title: "Built as a Global-First Platform", 
-                description: "Scalable infrastructure, multilingual AI, and high-volume message handling." 
+                title: "Built as a Global-First Platform",
+                description: "Scalable infrastructure, multilingual AI, and high-volume message handling."
               },
-              { 
+              {
                 icon: TrendingUp,
-                title: "AI That Goes Beyond Support", 
-                description: "Combines WhatsApp AI with Meta Ads integration to drive revenue." 
+                title: "AI That Goes Beyond Support",
+                description: "Combines WhatsApp AI with Meta Ads integration to drive revenue."
               },
-              { 
+              {
                 icon: BarChart3,
-                title: "Reduce Costs, Increase Conversions", 
-                description: "Automate lead qualification, follow-ups, and sales conversations." 
+                title: "Reduce Costs, Increase Conversions",
+                description: "Automate lead qualification, follow-ups, and sales conversations."
               },
-              { 
+              {
                 icon: Clock,
-                title: "Always-On Sales and Support", 
-                description: "Engage prospects and customers 24/7, even when your team is offline." 
+                title: "Always-On Sales and Support",
+                description: "Engage prospects and customers 24/7, even when your team is offline."
               },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
                 <div key={index} className="text-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mx-auto mb-4">
-                    <Icon className="h-6 w-6 text-primary" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-100 mx-auto mb-4">
+                    <Icon className="h-6 w-6 text-indigo-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm">{item.description}</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
               );
             })}
@@ -303,13 +309,13 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 md:py-32">
+      <section id="features" className="py-20 md:py-32 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Core Features
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Everything you need to automate WhatsApp conversations, capture leads, and convert customers.
             </p>
           </div>
@@ -319,13 +325,13 @@ export default function LandingPage() {
               return (
                 <div
                   key={index}
-                  className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors"
+                  className="p-6 rounded-xl bg-white border border-gray-200 hover:border-indigo-300 transition-colors shadow-sm"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
-                    <Icon className="h-6 w-6 text-primary" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-100 mb-4">
+                    <Icon className="h-6 w-6 text-indigo-600" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               );
             })}
@@ -334,13 +340,13 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 md:py-32 bg-secondary/30">
+      <section id="how-it-works" className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               How It Works
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Three simple steps to transform your WhatsApp into a lead generation and conversion machine.
             </p>
           </div>
@@ -348,13 +354,13 @@ export default function LandingPage() {
             {steps.map((step, index) => (
               <div key={index} className="relative">
                 <div className="text-center">
-                  <div className="text-6xl font-bold text-primary/20 mb-4">{step.number}</div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
+                  <div className="text-6xl font-bold text-indigo-200 mb-4">{step.number}</div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
+                  <p className="text-gray-600">{step.description}</p>
                 </div>
                 {index < steps.length - 1 && (
                   <div className="hidden md:block absolute top-12 right-0 translate-x-1/2 w-8">
-                    <ArrowRight className="h-6 w-6 text-primary/40" />
+                    <ArrowRight className="h-6 w-6 text-gray-300" />
                   </div>
                 )}
               </div>
@@ -364,13 +370,13 @@ export default function LandingPage() {
       </section>
 
       {/* Use Cases Section */}
-      <section id="use-cases" className="py-20 md:py-32">
+      <section id="use-cases" className="py-20 md:py-32 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Use Cases
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               SwitchPro adapts to your business needs across various industries and use cases.
             </p>
           </div>
@@ -380,15 +386,15 @@ export default function LandingPage() {
               return (
                 <div
                   key={index}
-                  className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors"
+                  className="p-6 rounded-xl bg-white border border-gray-200 hover:border-indigo-300 transition-colors shadow-sm"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0">
-                      <Icon className="h-6 w-6 text-primary" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-100 flex-shrink-0">
+                      <Icon className="h-6 w-6 text-indigo-600" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2">{useCase.title}</h3>
-                      <p className="text-muted-foreground">{useCase.description}</p>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{useCase.title}</h3>
+                      <p className="text-gray-600">{useCase.description}</p>
                     </div>
                   </div>
                 </div>
@@ -399,19 +405,19 @@ export default function LandingPage() {
       </section>
 
       {/* Why Businesses Choose SwitchPro */}
-      <section className="py-20 md:py-32 bg-secondary/30">
+      <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Why Businesses Choose SwitchPro
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-3 p-4 rounded-lg bg-card border border-border">
-                  <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                  <span className="text-foreground">{benefit}</span>
+                <div key={index} className="flex items-center gap-3 p-4 rounded-lg bg-gray-50 border border-gray-200">
+                  <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
+                  <span className="text-gray-700">{benefit}</span>
                 </div>
               ))}
             </div>
@@ -420,21 +426,21 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 md:py-32">
+      <section id="faq" className="py-20 md:py-32 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Frequently Asked Questions
               </h2>
             </div>
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-border">
-                  <AccordionTrigger className="text-left text-foreground hover:text-primary">
+                <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-lg mb-4 bg-white">
+                  <AccordionTrigger className="text-left text-gray-900 hover:text-indigo-600 px-4 py-3">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
+                  <AccordionContent className="text-gray-600 px-4 pb-4">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -445,55 +451,55 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-secondary/30">
+      <section className="py-20 md:py-32 bg-gradient-to-r from-indigo-600 to-purple-700 text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center p-12 rounded-2xl bg-primary/10 border border-primary/20">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <div className="max-w-4xl mx-auto text-center p-12 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Start Turning Conversations Into Revenue
             </h2>
-            <p className="text-lg text-muted-foreground mb-4">
+            <p className="text-lg text-white/80 mb-4">
               SwitchPro WhatsApp Chat Agent
             </p>
-            <p className="text-xl text-foreground mb-8 font-medium">
+            <p className="text-xl text-white mb-8 font-medium">
               Run ads. Capture leads. Convert customers. Automatically.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/signup">
-                <Button size="lg" className="text-lg px-8 h-14">
+                <Button size="lg" className="text-lg px-8 h-14 bg-white text-indigo-600 hover:bg-gray-100">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-border bg-transparent">
+              <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-white text-white hover:bg-white hover:text-indigo-600">
                 Book a Demo
               </Button>
             </div>
-            <p className="text-sm text-muted-foreground mt-6">
+            <p className="text-sm text-white/70 mt-6">
               Custom pricing available based on ad volume, automation complexity, and integrations.
             </p>
             <div className="flex items-center justify-center gap-4 mt-4">
-              <a href="#" className="text-sm text-primary hover:underline">Compare Plans</a>
-              <span className="text-muted-foreground">|</span>
-              <a href="#" className="text-sm text-primary hover:underline">Contact Sales</a>
+              <a href="#" className="text-sm text-white/80 hover:underline">Compare Plans</a>
+              <span className="text-white/60">|</span>
+              <a href="#" className="text-sm text-white/80 hover:underline">Contact Sales</a>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-border">
+      <footer className="py-12 border-t border-gray-200 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <Image
-                src="/images/frame-201.png"
-                alt="SwitchPro Logo"
-                width={140}
-                height={40}
-                className="h-8 w-auto"
+                src="/images/Frame 1.png"
+                alt="Company Logo"
+                width={250}
+                height={70}
+                className="h-12 w-auto object-contain"
               />
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               2026 SwitchPro. All rights reserved.
             </p>
           </div>

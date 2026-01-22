@@ -25,10 +25,10 @@ async function getDashboardData(tenantId: string) {
       [tenantId]
     ),
     query<{ sent: string; delivered: string; read: string }>(
-      `SELECT 
+      `SELECT
         COUNT(CASE WHEN sender_type IN ('agent', 'bot') THEN 1 END)::text as sent,
-        COUNT(CASE WHEN status = 'delivered' THEN 1 END)::text as delivered,
-        COUNT(CASE WHEN status = 'read' THEN 1 END)::text as read
+        COUNT(CASE WHEN m.status = 'delivered' THEN 1 END)::text as delivered,
+        COUNT(CASE WHEN m.status = 'read' THEN 1 END)::text as read
        FROM messages m
        JOIN conversations c ON m.conversation_id = c.id
        WHERE c.tenant_id = $1 AND m.created_at > NOW() - INTERVAL '30 days'`,
@@ -43,18 +43,18 @@ async function getDashboardData(tenantId: string) {
       status: string
       unread_count: string
     }>(
-      `SELECT 
+      `SELECT
         c.id,
         COALESCE(co.name, co.phone_number) as contact_name,
         co.phone_number as contact_phone,
         m.content as last_message,
         c.last_message_at,
         c.status,
-        (SELECT COUNT(*)::text FROM messages WHERE conversation_id = c.id AND status != 'read' AND sender_type = 'contact') as unread_count
+        (SELECT COUNT(*)::text FROM messages msg WHERE msg.conversation_id = c.id AND msg.status != 'read' AND msg.sender_type = 'contact') as unread_count
        FROM conversations c
        JOIN contacts co ON c.contact_id = co.id
        LEFT JOIN LATERAL (
-         SELECT content FROM messages WHERE conversation_id = c.id ORDER BY created_at DESC LIMIT 1
+         SELECT content FROM messages msg WHERE msg.conversation_id = c.id ORDER BY msg.created_at DESC LIMIT 1
        ) m ON true
        WHERE c.tenant_id = $1
        ORDER BY c.last_message_at DESC NULLS LAST
