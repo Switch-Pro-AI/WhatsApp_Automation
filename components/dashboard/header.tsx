@@ -37,11 +37,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
   }
 
   return (
-<<<<<<< HEAD
     <header className="h-16 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 flex items-center justify-between px-6">
-=======
-    <header className="h-16 border-b border-border bg-card flex items-center justify-between px-6">
->>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
       {/* Search */}
       <div className="flex-1 max-w-md">
         <div className="relative">

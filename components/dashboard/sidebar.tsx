@@ -45,7 +45,6 @@ export function DashboardSidebar({ tenant }: DashboardSidebarProps) {
   const pathname = usePathname()
 
   return (
-<<<<<<< HEAD
     <aside className="w-64 bg-gradient-to-br from-slate-900/80 to-purple-900/80 backdrop-blur border-r border-white/10 flex flex-col">
       {/* Logo */}
       <div className="h-16 flex items-center px-6 border-b border-white/10">
@@ -54,21 +53,10 @@ export function DashboardSidebar({ tenant }: DashboardSidebarProps) {
             <MessageSquare className="w-5 h-5 text-white" />
           </div>
           <span className="font-semibold text-white">WhatsFlow</span>
-=======
-    <aside className="w-64 bg-sidebar border-r border-sidebar-border flex flex-col">
-      {/* Logo */}
-      <div className="h-16 flex items-center px-6 border-b border-sidebar-border">
-        <Link href="/dashboard" className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-sidebar-primary flex items-center justify-center">
-            <MessageSquare className="w-5 h-5 text-sidebar-primary-foreground" />
-          </div>
-          <span className="font-semibold text-sidebar-foreground">WhatsFlow</span>
->>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
         </Link>
       </div>
 
       {/* Tenant Selector */}
-<<<<<<< HEAD
       <div className="px-4 py-3 border-b border-white/10">
         <div className="flex items-center gap-3 px-2 py-2 rounded-lg bg-white/5">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-white font-semibold text-sm">
@@ -79,18 +67,6 @@ export function DashboardSidebar({ tenant }: DashboardSidebarProps) {
               {tenant.name}
             </p>
             <p className="text-xs text-white/60 capitalize">{tenant.plan} plan</p>
-=======
-      <div className="px-4 py-3 border-b border-sidebar-border">
-        <div className="flex items-center gap-3 px-2 py-2 rounded-lg bg-sidebar-accent">
-          <div className="w-8 h-8 rounded-lg bg-sidebar-primary/20 flex items-center justify-center text-sidebar-primary font-semibold text-sm">
-            {tenant.name.charAt(0).toUpperCase()}
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-sidebar-foreground truncate">
-              {tenant.name}
-            </p>
-            <p className="text-xs text-muted-foreground capitalize">{tenant.plan} plan</p>
->>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
           </div>
         </div>
       </div>
@@ -98,31 +74,17 @@ export function DashboardSidebar({ tenant }: DashboardSidebarProps) {
       {/* Main Navigation */}
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
         {mainNavItems.map((item) => {
-<<<<<<< HEAD
           const isActive = pathname === item.href ||
             (item.href !== "/dashboard" && pathname.startsWith(item.href))
-
-=======
-          const isActive = pathname === item.href || 
-            (item.href !== "/dashboard" && pathname.startsWith(item.href))
-          
->>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
           return (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-<<<<<<< HEAD
                 "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300",
                 isActive
                   ? "bg-gradient-to-r from-purple-600/50 to-pink-600/50 text-white shadow-lg"
                   : "text-white/80 hover:text-white hover:bg-white/10 hover:translate-x-1"
-=======
-                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
-                isActive
-                  ? "bg-sidebar-primary text-sidebar-primary-foreground"
-                  : "text-sidebar-foreground hover:bg-sidebar-accent"
->>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
               )}
             >
               <item.icon className="w-5 h-5" />
@@ -133,33 +95,19 @@ export function DashboardSidebar({ tenant }: DashboardSidebarProps) {
       </nav>
 
       {/* Bottom Navigation */}
-<<<<<<< HEAD
       <div className="px-3 py-4 border-t border-white/10 space-y-1">
         {bottomNavItems.map((item) => {
           const isActive = pathname === item.href || pathname.startsWith(item.href)
 
-=======
-      <div className="px-3 py-4 border-t border-sidebar-border space-y-1">
-        {bottomNavItems.map((item) => {
-          const isActive = pathname === item.href || pathname.startsWith(item.href)
-          
->>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
           return (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-<<<<<<< HEAD
                 "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300",
                 isActive
                   ? "bg-gradient-to-r from-purple-600/50 to-pink-600/50 text-white shadow-lg"
                   : "text-white/80 hover:text-white hover:bg-white/10 hover:translate-x-1"
-=======
-                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
-                isActive
-                  ? "bg-sidebar-primary text-sidebar-primary-foreground"
-                  : "text-sidebar-foreground hover:bg-sidebar-accent"
->>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
               )}
             >
               <item.icon className="w-5 h-5" />
