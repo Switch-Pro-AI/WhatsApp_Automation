@@ -22,7 +22,11 @@ export default async function DashboardLayout({
   }
 
   return (
+<<<<<<< HEAD
     <div className="flex h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 animate-gradient">
+=======
+    <div className="flex h-screen bg-background">
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
       <DashboardSidebar user={user} tenant={tenant} />
       <div className="flex-1 flex flex-col overflow-hidden">
         <DashboardHeader user={user} tenant={tenant} />

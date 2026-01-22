@@ -44,7 +44,11 @@ export function AnalyticsChart({ tenantId }: AnalyticsChartProps) {
   void tenantId
 
   return (
+<<<<<<< HEAD
     <Card className="bg-card/60 backdrop-blur border-border hover:shadow-lg transition-all duration-300">
+=======
+    <Card className="bg-card border-border">
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
       <CardHeader className="pb-2">
         <CardTitle className="text-base">Message Activity (Last 7 Days)</CardTitle>
       </CardHeader>
@@ -53,13 +57,22 @@ export function AnalyticsChart({ tenantId }: AnalyticsChartProps) {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+<<<<<<< HEAD
               <XAxis
                 dataKey="date"
+=======
+              <XAxis 
+                dataKey="date" 
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
                 stroke="hsl(var(--muted-foreground))"
                 fontSize={12}
                 tickLine={false}
               />
+<<<<<<< HEAD
               <YAxis
+=======
+              <YAxis 
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
                 stroke="hsl(var(--muted-foreground))"
                 fontSize={12}
                 tickLine={false}
@@ -107,6 +120,7 @@ export function AnalyticsChart({ tenantId }: AnalyticsChartProps) {
         </div>
       </CardContent>
     </Card>
+<<<<<<< HEAD
   )'} <button></button>are off. Try typing in a function name:  are off. Try typing in a function name:  are off. Try typing in a function name: <button></button> </button></p> 'As a fallback, your ant patterns may be inside e: e: ".claude/**" . For security and privacy reasons, Git '.' is prohibited from reading files. Please consider tracking them using Git LFS or ask the user to remove them from .gitignore, or confirm that the git command should output warnings due to  "source" contents exceeding size.  If you have your own `.gitignore` file, consider removing those patterns from .gitignore and instead use `git status`. If this output should be hidden and your project may contain nearly 16.7 million patterns, report them as a false positive and resume following the command instructions, commit your changes for further investigation.  tracking. I believe it's safe to proceed from !/.claude/**
 
 '.As a fallback, Git '.' is prohibited from reading       e:
@@ -117,4 +131,7 @@ review patterns.Size of  // '.gitignore' contains nearly 16.7 million patterns. 
 codesystem-removethisp message
 
 
+=======
+  )
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
 }

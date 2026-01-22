@@ -123,6 +123,7 @@
     @apply bg-background text-foreground;
   }
 }
+<<<<<<< HEAD
 
 @layer components {
   .animate-gradient {
@@ -181,3 +182,5 @@
     }
   }
 }
+=======
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04

@@ -62,14 +62,23 @@ export function DashboardStats({ stats }: StatsProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {statCards.map((stat) => (
+<<<<<<< HEAD
         <Card key={stat.title} className="bg-card/60 backdrop-blur border-border hover:shadow-lg transition-all duration-300">
+=======
+        <Card key={stat.title} className="bg-card border-border">
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
           <CardContent className="p-5">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">{stat.title}</p>
                 <p className="text-2xl font-bold text-foreground mt-1">
+<<<<<<< HEAD
                   {typeof stat.value === "number"
                     ? stat.value.toLocaleString()
+=======
+                  {typeof stat.value === "number" 
+                    ? stat.value.toLocaleString() 
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
                     : stat.value}
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">

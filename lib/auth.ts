@@ -21,8 +21,11 @@ export interface Tenant {
   name: string
   slug: string
   plan: string
+<<<<<<< HEAD
   whatsapp_phone_number_id?: string | null
   whatsapp_business_account_id?: string | null
+=======
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
 }
 
 export async function hashPassword(password: string): Promise<string> {
@@ -74,6 +77,7 @@ export async function getCurrentTenant(): Promise<Tenant | null> {
   const user = await getCurrentUser()
   if (!user) return null
 
+<<<<<<< HEAD
   // Get tenant info with associated WhatsApp account details if available
   const result = await queryOne<{
     id: string,
@@ -103,6 +107,13 @@ export async function getCurrentTenant(): Promise<Tenant | null> {
     whatsapp_business_account_id: result.temp_waba_id || null
   }
 
+=======
+  const tenant = await queryOne<Tenant>(
+    `SELECT id, name, slug, plan FROM tenants WHERE id = $1`,
+    [user.tenant_id]
+  )
+
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
   return tenant
 }
 

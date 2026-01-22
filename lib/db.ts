@@ -27,7 +27,11 @@ export async function queryOne<T>(
   params: unknown[] = []
 ): Promise<T | null> {
   const result = await query<T>(queryText, params)
+<<<<<<< HEAD
   return result && Array.isArray(result) && result.length > 0 ? result[0] : null
+=======
+  return result[0] || null
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
 }
 
 export { sql }

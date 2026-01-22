@@ -24,8 +24,12 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+<<<<<<< HEAD
 next-env.d.ts
 public/apple-icon.png
 public/apple-icon.png
 .gitignore
 public/icon.svg
+=======
+next-env.d.ts
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04

@@ -30,7 +30,11 @@ const statusColors: Record<string, string> = {
 export function RecentConversations({ conversations }: RecentConversationsProps) {
   if (conversations.length === 0) {
     return (
+<<<<<<< HEAD
       <Card className="bg-card/60 backdrop-blur border-border hover:shadow-lg transition-all duration-300">
+=======
+      <Card className="bg-card border-border">
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
         <CardHeader>
           <CardTitle className="text-base">Recent Conversations</CardTitle>
         </CardHeader>
@@ -52,7 +56,11 @@ export function RecentConversations({ conversations }: RecentConversationsProps)
   }
 
   return (
+<<<<<<< HEAD
     <Card className="bg-card/60 backdrop-blur border-border hover:shadow-lg transition-all duration-300">
+=======
+    <Card className="bg-card border-border">
+>>>>>>> aa992935bc6a2d96a9f1b8f1da60461b23f61d04
       <CardHeader className="flex flex-row items-center justify-between pb-3">
         <CardTitle className="text-base">Recent Conversations</CardTitle>
         <Button variant="ghost" size="sm" asChild>
