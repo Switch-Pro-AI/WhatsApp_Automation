@@ -25,3 +25,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+public/apple-icon.png
+public/apple-icon.png
+.gitignore
+public/icon.svg

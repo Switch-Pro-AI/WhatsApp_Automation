@@ -57,7 +57,7 @@ const actions = [
 
 export function QuickActions() {
   return (
-    <Card className="bg-card border-border h-full">
+    <Card className="bg-card/60 backdrop-blur border-border hover:shadow-lg transition-all duration-300 h-full">
       <CardHeader className="pb-3">
         <CardTitle className="text-base">Quick Actions</CardTitle>
       </CardHeader>
@@ -66,7 +66,7 @@ export function QuickActions() {
           <Link
             key={action.title}
             href={action.href}
-            className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors group"
+            className="flex items-center gap-3 p-3 rounded-lg bg-secondary/30 hover:bg-secondary transition-all duration-300 group"
           >
             <div className={`p-2 rounded-lg bg-secondary ${action.color}`}>
               <action.icon className="w-4 h-4" />
