@@ -1,0 +1,61 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow6">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Shield Icon -->
+  <g filter="url(#shadow6)">
+    <path d="M 200 80 L 240 100 L 240 140 L 200 160 L 160 140 L 160 100 Z" fill="url(#grad6)" stroke="#047857" stroke-width="3"/>
+    <path d="M 200 100 L 210 120 L 190 120 Z" fill="white" opacity="0.8"/>
+    <circle cx="200" cy="125" r="6" fill="white"/>
+  </g>
+
+  <!-- Security Features -->
+  <g filter="url(#shadow6)">
+    <!-- Lock -->
+    <rect x="80" y="190" width="40" height="30" rx="5" fill="#1f2937"/>
+    <path d="M 100 180 L 100 190 M 90 180 L 110 180" stroke="#1f2937" stroke-width="3" fill="none"/>
+    <circle cx="100" cy="205" r="4" fill="#10b981"/>
+
+    <!-- Check Mark -->
+    <circle cx="180" cy="205" r="15" fill="#10b981"/>
+    <path d="M 172 205 L 176 209 L 188 197" stroke="white" stroke-width="3" fill="none"/>
+
+    <!-- Encryption -->
+    <rect x="220" y="190" width="60" height="40" rx="5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+    <text x="250" y="205" font-family="Arial, sans-serif" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="600">AES-256</text>
+    <text x="250" y="220" font-family="Arial, sans-serif" font-size="8" fill="#6b7280" text-anchor="middle">Encryption</text>
+
+    <!-- GDPR -->
+    <rect x="300" y="190" width="50" height="40" rx="5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="325" y="205" font-family="Arial, sans-serif" font-size="10" fill="#92400e" text-anchor="middle" font-weight="600">GDPR</text>
+    <text x="325" y="220" font-family="Arial, sans-serif" font-size="8" fill="#d97706" text-anchor="middle">Compliant</text>
+  </g>
+
+  <!-- Security text -->
+  <text x="100" y="165" font-family="Arial, sans-serif" font-size="11" fill="#374151" text-anchor="middle">Secure</text>
+  <text x="180" y="165" font-family="Arial, sans-serif" font-size="11" fill="#374151" text-anchor="middle">Verified</text>
+  <text x="250" y="175" font-family="Arial, sans-serif" font-size="10" fill="#374151" text-anchor="middle">Encrypted</text>
+  <text x="325" y="175" font-family="Arial, sans-serif" font-size="10" fill="#374151" text-anchor="middle">Compliance</text>
+
+  <!-- Check marks around shield -->
+  <circle cx="120" cy="100" r="8" fill="#10b981"/>
+  <path d="M 115 100 L 118 103 L 125 96" stroke="white" stroke-width="2" fill="none"/>
+
+  <circle cx="200" cy="70" r="8" fill="#10b981"/>
+  <path d="M 195 70 L 198 73 L 205 66" stroke="white" stroke-width="2" fill="none"/>
+
+  <circle cx="280" cy="100" r="8" fill="#10b981"/>
+  <path d="M 275 100 L 278 103 L 285 96" stroke="white" stroke-width="2" fill="none"/>
+
+  <!-- Title -->
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#1f2937" text-anchor="middle">Enterprise Security</text>
+  <text x="200" y="295" font-family="Arial, sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Bank-grade encryption & compliance</text>
+</svg>
+

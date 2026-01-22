@@ -254,14 +254,14 @@ export function CampaignsList({ campaigns, templates, stats, tenantId }: Campaig
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {statCards.map((stat) => (
-          <Card key={stat.title} className="bg-card border-border">
+          <Card key={stat.title} className="bg-white border-gray-200">
             <CardContent className="p-4 flex items-center gap-4">
               <div className={`p-3 rounded-lg ${stat.bgColor}`}>
                 <stat.icon className={`w-5 h-5 ${stat.color}`} />
               </div>
               <div>
-                <p className="text-2xl font-bold text-foreground">{stat.value}</p>
-                <p className="text-sm text-muted-foreground">{stat.title}</p>
+                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                <p className="text-sm text-gray-600">{stat.title}</p>
               </div>
             </CardContent>
           </Card>
@@ -269,7 +269,7 @@ export function CampaignsList({ campaigns, templates, stats, tenantId }: Campaig
       </div>
 
       {/* Campaigns Table */}
-      <Card className="bg-card border-border">
+      <Card className="bg-white border-gray-200">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">All Campaigns</CardTitle>
         </CardHeader>

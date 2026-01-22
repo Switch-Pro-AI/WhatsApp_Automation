@@ -1,0 +1,57 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow4">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Megaphone/Campaign Icon -->
+  <g filter="url(#shadow4)">
+    <path d="M 200 60 L 250 100 L 200 140 Z" fill="url(#grad4)" stroke="#7c3aed" stroke-width="3"/>
+    <rect x="250" y="85" width="40" height="30" rx="5" fill="#6b7280"/>
+    <path d="M 290 100 L 310 100 L 310 85 L 330 100 L 310 115 L 310 100" fill="#4b5563"/>
+
+    <!-- Sound Waves -->
+    <path d="M 340 95 Q 350 100 340 105" fill="none" stroke="#6b7280" stroke-width="2"/>
+    <path d="M 345 90 Q 360 100 345 110" fill="none" stroke="#9ca3af" stroke-width="2"/>
+  </g>
+
+  <!-- Multiple users receiving messages -->
+  <g filter="url(#shadow4)">
+    <!-- User 1 -->
+    <circle cx="80" cy="180" r="25" fill="#3b82f6"/>
+    <text x="80" y="186" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="white" text-anchor="middle">U1</text>
+    <path d="M 110 180 L 130 180 L 125 175 L 140 180 L 125 185 L 130 180" fill="#3b82f6" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="145" y="165" width="60" height="30" rx="10" fill="#e0f2fe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="175" y="183" font-family="Arial, sans-serif" font-size="10" fill="#1e40af" text-anchor="middle">Hello!</text>
+
+    <!-- User 2 -->
+    <circle cx="80" cy="240" r="25" fill="#8b5cf6"/>
+    <text x="80" y="246" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="white" text-anchor="middle">U2</text>
+    <path d="M 110 240 L 130 240 L 125 235 L 140 240 L 125 245 L 130 240" fill="#8b5cf6" stroke="#8b5cf6" stroke-width="2"/>
+    <rect x="145" y="225" width="60" height="30" rx="10" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="175" y="243" font-family="Arial, sans-serif" font-size="10" fill="#6b21a8" text-anchor="middle">Hi!</text>
+
+    <!-- User 3 -->
+    <circle cx="80" cy="300" r="25" fill="#10b981"/>
+    <text x="80" y="306" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="white" text-anchor="middle">U3</text>
+    <path d="M 110 300 L 130 300 L 125 295 L 140 300 L 125 305 L 130 300" fill="#10b981" stroke="#10b981" stroke-width="2"/>
+    <rect x="145" y="285" width="60" height="30" rx="10" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+    <text x="175" y="303" font-family="Arial, sans-serif" font-size="10" fill="#166534" text-anchor="middle">Hi!</text>
+  </g>
+
+  <!-- Campaign Stats -->
+  <rect x="240" y="165" width="120" height="80" rx="10" fill="white" stroke="#e5e7eb" stroke-width="2"/>
+  <text x="300" y="185" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#1f2937" text-anchor="middle">Campaign</text>
+  <text x="300" y="205" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#3b82f6" text-anchor="middle">2,847</text>
+  <text x="300" y="220" font-family="Arial, sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">sent</text>
+  <text x="300" y="235" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#10b981" text-anchor="middle">97% delivered</text>
+
+  <!-- Title -->
+  <text x="200" y="340" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#1f2937" text-anchor="middle">Broadcast Campaigns</text>
+</svg>
+

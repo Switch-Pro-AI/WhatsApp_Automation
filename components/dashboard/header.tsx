@@ -37,67 +37,67 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
   }
 
   return (
-    <header className="h-16 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 flex items-center justify-between px-6">
+    <header className="h-16 border-b border-gray-200 bg-white flex items-center justify-between px-6">
       {/* Search */}
       <div className="flex-1 max-w-md">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <Input
             placeholder="Search contacts, conversations..."
-            className="pl-9 bg-secondary border-border h-10"
+            className="pl-9 bg-gray-50 border-gray-300 h-10 text-gray-900 placeholder-gray-500"
           />
         </div>
       </div>
 
       {/* Actions */}
       <div className="flex items-center gap-3">
-        <Button size="sm" className="gap-2">
+        <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
           <Plus className="w-4 h-4" />
           New Message
         </Button>
 
         {/* Notifications */}
-        <Button variant="ghost" size="icon" className="relative">
+        <Button variant="ghost" size="icon" className="relative text-gray-600 hover:text-gray-900">
           <Bell className="w-5 h-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full" />
+          <span className="absolute top-1 right-1 w-2 h-2 bg-blue-600 rounded-full" />
         </Button>
 
         {/* User Menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="gap-2 px-2">
+            <Button variant="ghost" className="gap-2 px-2 hover:bg-gray-100">
               <Avatar className="w-8 h-8">
                 <AvatarImage src={user.avatar_url || undefined} />
-                <AvatarFallback className="bg-primary text-primary-foreground text-sm">
+                <AvatarFallback className="bg-blue-600 text-white text-sm">
                   {user.name?.charAt(0).toUpperCase() || "U"}
                 </AvatarFallback>
               </Avatar>
-              <span className="text-sm font-medium hidden sm:block">{user.name}</span>
+              <span className="text-sm font-medium hidden sm:block text-gray-900">{user.name}</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>
+          <DropdownMenuContent align="end" className="w-56 bg-white border-gray-200">
+            <DropdownMenuLabel className="text-gray-900">
               <div className="flex flex-col">
-                <span>{user.name}</span>
-                <span className="text-xs font-normal text-muted-foreground">
+                <span className="text-gray-900">{user.name}</span>
+                <span className="text-xs font-normal text-gray-500">
                   {user.email}
                 </span>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => router.push("/dashboard/settings/profile")}>
+            <DropdownMenuItem onClick={() => router.push("/dashboard/settings/profile")} className="text-gray-700 hover:bg-gray-100">
               <UserIcon className="w-4 h-4 mr-2" />
               Profile
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => router.push("/dashboard/settings")}>
+            <DropdownMenuItem onClick={() => router.push("/dashboard/settings")} className="text-gray-700 hover:bg-gray-100">
               <Settings className="w-4 h-4 mr-2" />
               Settings
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem 
-              onClick={handleLogout} 
+            <DropdownMenuItem
+              onClick={handleLogout}
               disabled={isLoggingOut}
-              className="text-destructive focus:text-destructive"
+              className="text-red-600 hover:bg-red-50 focus:text-red-600"
             >
               <LogOut className="w-4 h-4 mr-2" />
               {isLoggingOut ? "Logging out..." : "Log out"}

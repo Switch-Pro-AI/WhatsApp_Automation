@@ -46,12 +46,12 @@ export default function AgentConfigPage() {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="bg-card border border-border p-1 h-auto flex-wrap gap-1">
+        <TabsList className="bg-white border border-gray-200 p-1 h-auto flex-wrap gap-1">
           {tabs.map((tab) => (
             <TabsTrigger
               key={tab.id}
               value={tab.id}
-              className="gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white text-gray-700"
             >
               <tab.icon className="w-4 h-4" />
               <span className="hidden sm:inline">{tab.label}</span>

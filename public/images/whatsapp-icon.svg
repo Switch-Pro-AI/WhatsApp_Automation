@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#f0fdfa"/>
+  
+  <!-- WhatsApp green background -->
+  <circle cx="100" cy="100" r="80" fill="#22c55e"/>
+  
+  <!-- Speech bubble -->
+  <path d="M60 80 Q100 60 140 80 Q140 120 100 140 Q60 120 60 80" fill="white"/>
+  
+  <!-- WhatsApp logo elements -->
+  <path d="M85 105 C85 105 90 100 100 100 C110 100 115 105 115 105 C115 105 110 110 100 110 C90 110 85 105 85 105 Z" fill="#22c55e"/>
+  <circle cx="95" cy="95" r="5" fill="#22c55e"/>
+  <circle cx="105" cy="95" r="5" fill="#22c55e"/>
+  
+  <!-- Message checkmarks -->
+  <path d="M75 125 L85 135 L105 115" stroke="#22c55e" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M95 135 L105 145 L125 125" stroke="#22c55e" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

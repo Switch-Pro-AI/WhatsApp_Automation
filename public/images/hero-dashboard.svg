@@ -1,0 +1,58 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="400" rx="16" fill="#ffffff" filter="url(#shadow)"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="600" height="60" rx="16" fill="#f8fafc"/>
+  <circle cx="30" cy="30" r="8" fill="url(#grad1)"/>
+  <text x="50" y="35" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#1e293b">WhatsFlow Dashboard</text>
+
+  <!-- Sidebar -->
+  <rect x="0" y="60" width="160" height="340" fill="#f1f5f9"/>
+  <rect x="20" y="80" width="120" height="4" rx="2" fill="#cbd5e1"/>
+  <rect x="20" y="95" width="100" height="4" rx="2" fill="#cbd5e1"/>
+  <rect x="20" y="130" width="120" height="32" rx="8" fill="#dbeafe"/>
+  <text x="30" y="152" font-family="Arial, sans-serif" font-size="14" fill="#3b82f6" font-weight="500">Dashboard</text>
+  <rect x="20" y="175" width="120" height="32" rx="8" fill="#f1f5f9"/>
+  <text x="30" y="197" font-family="Arial, sans-serif" font-size="14" fill="#64748b">Inbox</text>
+  <rect x="20" y="220" width="120" height="32" rx="8" fill="#f1f5f9"/>
+  <text x="30" y="242" font-family="Arial, sans-serif" font-size="14" fill="#64748b">Contacts</text>
+  <rect x="20" y="265" width="120" height="32" rx="8" fill="#f1f5f9"/>
+  <text x="30" y="287" font-family="Arial, sans-serif" font-size="14" fill="#64748b">Campaigns</text>
+
+  <!-- Main Content -->
+  <rect x="180" y="90" width="200" height="120" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="195" y="115" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Active Conversations</text>
+  <text x="195" y="145" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#1e293b">247</text>
+  <text x="195" y="165" font-family="Arial, sans-serif" font-size="12" fill="#10b981">↑ 12% from last week</text>
+
+  <rect x="400" y="90" width="180" height="120" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="415" y="115" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Response Rate</text>
+  <text x="415" y="145" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#1e293b">94%</text>
+  <text x="415" y="165" font-family="Arial, sans-serif" font-size="12" fill="#10b981">↑ 5% improvement</text>
+
+  <!-- Chart -->
+  <rect x="180" y="230" width="400" height="140" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="195" y="255" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#1e293b">Message Activity</text>
+
+  <!-- Chart bars -->
+  <rect x="210" y="280" width="25" height="60" rx="4" fill="#3b82f6"/>
+  <rect x="250" y="265" width="25" height="75" rx="4" fill="#8b5cf6"/>
+  <rect x="290" y="275" width="25" height="65" rx="4" fill="#3b82f6"/>
+  <rect x="330" y="255" width="25" height="85" rx="4" fill="#8b5cf6"/>
+  <rect x="370" y="270" width="25" height="70" rx="4" fill="#3b82f6"/>
+  <rect x="410" y="260" width="25" height="80" rx="4" fill="#8b5cf6"/>
+  <rect x="450" y="275" width="25" height="65" rx="4" fill="#3b82f6"/>
+  <rect x="490" y="280" width="25" height="60" rx="4" fill="#8b5cf6"/>
+  <rect x="530" y="270" width="25" height="70" rx="4" fill="#3b82f6"/>
+</svg>

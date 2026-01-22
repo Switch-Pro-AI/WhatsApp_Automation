@@ -324,19 +324,44 @@ export default function LandingPage() {
               Everything you need to automate WhatsApp conversations, capture leads, and convert customers.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => {
+              const featureImages = [
+                "/images/landing/features/unified-inbox.svg",
+                "/images/landing/features/ai-automation.svg",
+                "/images/landing/features/contact-management.svg",
+                "/images/landing/features/broadcast-campaigns.svg",
+                "/images/landing/features/advanced-analytics.svg",
+                "/images/landing/features/enterprise-security.svg",
+                "/images/landing/features/human-ai-collaboration.svg",
+                "/images/landing/features/global-platform.svg"
+              ];
+              // Cycle through images if there are more features than images
+              const imageSrc = featureImages[index % featureImages.length];
               const Icon = feature.icon;
               return (
                 <div
                   key={index}
-                  className="group p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
+                  className="group bg-white rounded-2xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 overflow-hidden"
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 mb-5">
-                    <Icon className="h-7 w-7 text-blue-600" />
+                  <div className="h-48 bg-gray-50 flex items-center justify-center">
+                    <Image
+                      src={imageSrc}
+                      alt={feature.title}
+                      width={300}
+                      height={200}
+                      className="w-full h-full object-contain p-4"
+                    />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 mb-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10">
+                        <Icon className="h-6 w-6 text-blue-600" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900">{feature.title}</h3>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  </div>
                 </div>
               );
             })}
@@ -345,27 +370,27 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="relative z-10 py-20 md:py-32 border-y border-white/10 bg-white/5 backdrop-blur">
+      <section id="how-it-works" className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               How It Works
             </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Three simple steps to transform your WhatsApp into a lead generation and conversion machine.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {steps.map((step, index) => (
               <div key={index} className="relative group">
-                <div className="text-center p-8 rounded-2xl bg-white/5 backdrop-blur border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-2">
-                  <div className="text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">{step.number}</div>
-                  <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
-                  <p className="text-white/70">{step.description}</p>
+                <div className="text-center p-8 rounded-2xl bg-gray-50 border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                  <div className="text-6xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">{step.number}</div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
+                  <p className="text-gray-600">{step.description}</p>
                 </div>
                 {index < steps.length - 1 && (
                   <div className="hidden md:block absolute top-16 right-0 translate-x-1/2 group-hover:translate-x-1/3 transition-transform duration-300">
-                    <ArrowRight className="h-8 w-8 text-purple-400/50" />
+                    <ArrowRight className="h-8 w-8 text-gray-300" />
                   </div>
                 )}
               </div>
@@ -456,36 +481,36 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-r from-indigo-600 to-purple-700 text-white">
+      <section className="py-20 md:py-32 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center p-12 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <div className="max-w-4xl mx-auto text-center p-12 rounded-2xl bg-white border border-gray-200 shadow-lg">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Start Turning Conversations Into Revenue
             </h2>
-            <p className="text-lg text-white/80 mb-4">
+            <p className="text-lg text-gray-700 mb-4">
               SwitchPro WhatsApp Chat Agent
             </p>
-            <p className="text-xl text-white mb-8 font-medium">
+            <p className="text-xl text-gray-800 mb-8 font-medium">
               Run ads. Capture leads. Convert customers. Automatically.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/signup">
-                <Button size="lg" className="text-lg px-8 h-14 bg-white text-indigo-600 hover:bg-gray-100">
+                <Button size="lg" className="text-lg px-8 h-14 bg-indigo-600 hover:bg-indigo-700 text-white">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-white text-white hover:bg-white hover:text-indigo-600">
+              <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-gray-300 text-gray-700 hover:bg-gray-50">
                 Book a Demo
               </Button>
             </div>
-            <p className="text-sm text-white/70 mt-6">
+            <p className="text-sm text-gray-600 mt-6">
               Custom pricing available based on ad volume, automation complexity, and integrations.
             </p>
             <div className="flex items-center justify-center gap-4 mt-4">
-              <a href="#" className="text-sm text-white/80 hover:underline">Compare Plans</a>
-              <span className="text-white/60">|</span>
-              <a href="#" className="text-sm text-white/80 hover:underline">Contact Sales</a>
+              <a href="#" className="text-sm text-gray-600 hover:underline">Compare Plans</a>
+              <span className="text-gray-400">|</span>
+              <a href="#" className="text-sm text-gray-600 hover:underline">Contact Sales</a>
             </div>
           </div>
         </div>

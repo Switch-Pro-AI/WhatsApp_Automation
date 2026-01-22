@@ -1,0 +1,52 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+    <filter id="aiShadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- AI Bot -->
+  <g filter="url(#aiShadow)">
+    <rect x="150" y="40" width="100" height="80" rx="15" fill="url(#aiGrad)"/>
+    <!-- Robot face -->
+    <circle cx="200" cy="65" r="8" fill="white"/>
+    <circle cx="200" cy="65" r="4" fill="#1f2937"/>
+    <circle cx="180" cy="65" r="8" fill="white"/>
+    <circle cx="180" cy="65" r="4" fill="#1f2937"/>
+    <rect x="185" y="80" width="30" height="4" rx="2" fill="white"/>
+    <!-- Processing indicator -->
+    <circle cx="190" cy="95" r="3" fill="#10b981"/>
+    <circle cx="200" cy="95" r="3" fill="#10b981"/>
+    <circle cx="210" cy="95" r="3" fill="#10b981"/>
+    <text x="200" y="115" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="500">AI Processing</text>
+  </g>
+
+  <!-- Conversation Flow -->
+  <g filter="url(#aiShadow)">
+    <!-- User Message -->
+    <rect x="80" y="150" width="120" height="35" rx="18" fill="#3b82f6"/>
+    <text x="90" y="170" font-family="Arial, sans-serif" font-size="11" fill="white">Hi, I'm looking for...</text>
+
+    <!-- AI Qualifying Questions -->
+    <rect x="200" y="150" width="140" height="60" rx="18" fill="#e2e8f0"/>
+    <text x="210" y="170" font-family="Arial, sans-serif" font-size="10" fill="#1f2937" font-weight="600">AI: Great! To help you:</text>
+    <text x="210" y="185" font-family="Arial, sans-serif" font-size="9" fill="#6b7280">1. What's your budget range?</text>
+    <text x="210" y="197" font-family="Arial, sans-serif" font-size="9" fill="#6b7280">2. When do you need this?</text>
+
+    <!-- User Response -->
+    <rect x="80" y="220" width="100" height="35" rx="18" fill="#3b82f6"/>
+    <text x="90" y="240" font-family="Arial, sans-serif" font-size="11" fill="white">Budget: $5k-10k</text>
+  </g>
+
+  <!-- Qualification Score -->
+  <rect x="160" y="270" width="80" height="25" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="200" y="286" font-family="Arial, sans-serif" font-size="11" fill="#92400e" text-anchor="middle" font-weight="600">Score: 85/100</text>
+
+  <!-- Title -->
+  <text x="200" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#1f2937" text-anchor="middle">Capture & Qualify Leads</text>
+</svg>
+
