@@ -193,17 +193,18 @@ export default function QuickRepliesPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredReplies.length > 0 ? (
           filteredReplies.map((reply) => (
-            <Card key={reply.id} className="overflow-hidden">
-              <CardHeader className="pb-2">
+            <Card key={reply.id} className="overflow-hidden bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <CardHeader className="pb-2 bg-gray-50 border-b border-gray-100">
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle className="text-lg">{reply.title}</CardTitle>
-                    <CardDescription className="text-xs">/{reply.shortcut}</CardDescription>
+                    <CardTitle className="text-lg text-gray-900">{reply.title}</CardTitle>
+                    <CardDescription className="text-xs text-gray-500">/{reply.shortcut}</CardDescription>
                   </div>
                   <div className="flex space-x-1">
                     <Button
                       variant="ghost"
                       size="sm"
+                      className="text-gray-600 hover:text-gray-900 hover:bg-gray-100"
                       onClick={() => handleEdit(reply)}
                     >
                       <Edit className="h-4 w-4" />
@@ -211,6 +212,7 @@ export default function QuickRepliesPage() {
                     <Button
                       variant="ghost"
                       size="sm"
+                      className="text-gray-600 hover:text-red-600 hover:bg-gray-100"
                       onClick={() => handleDelete(reply.id)}
                     >
                       <Trash2 className="h-4 w-4" />
@@ -218,11 +220,11 @@ export default function QuickRepliesPage() {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground line-clamp-3">
+              <CardContent className="bg-white">
+                <p className="text-sm text-gray-600 line-clamp-3">
                   {reply.content}
                 </p>
-                <div className="mt-4 text-xs text-muted-foreground">
+                <div className="mt-4 text-xs text-gray-500">
                   Created: {new Date(reply.createdAt).toLocaleDateString()}
                 </div>
               </CardContent>

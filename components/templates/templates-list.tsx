@@ -213,16 +213,16 @@ export function TemplatesList({ templates, tenantId }: TemplatesListProps) {
 
       {/* Templates Grid */}
       {templates.length === 0 ? (
-        <Card className="bg-card border-border">
+        <Card className="bg-white border border-gray-200 shadow-sm">
           <CardContent className="py-12 flex flex-col items-center justify-center text-center">
-            <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mb-4">
-              <FileText className="w-8 h-8 text-muted-foreground" />
+            <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+              <FileText className="w-8 h-8 text-gray-500" />
             </div>
-            <h3 className="text-lg font-semibold text-foreground mb-2">No templates yet</h3>
-            <p className="text-muted-foreground mb-4 max-w-sm">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">No templates yet</h3>
+            <p className="text-gray-600 mb-4 max-w-sm">
               Create message templates to use in your broadcast campaigns.
             </p>
-            <Button onClick={() => setIsCreating(true)}>
+            <Button onClick={() => setIsCreating(true)} className="bg-blue-600 hover:bg-blue-700 text-white">
               <Plus className="w-4 h-4 mr-2" />
               Create Your First Template
             </Button>
@@ -234,41 +234,41 @@ export function TemplatesList({ templates, tenantId }: TemplatesListProps) {
             const StatusIcon = statusIcons[template.status] || Clock
 
             return (
-              <Card key={template.id} className="bg-card border-border">
-                <CardHeader className="pb-3">
+              <Card key={template.id} className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3 bg-gray-50 border-b border-gray-100">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-primary/10">
-                        <FileText className="w-4 h-4 text-primary" />
+                      <div className="p-2 rounded-lg bg-blue-100">
+                        <FileText className="w-4 h-4 text-blue-600" />
                       </div>
                       <div>
-                        <CardTitle className="text-base">{template.name}</CardTitle>
-                        <p className="text-xs text-muted-foreground capitalize">
+                        <CardTitle className="text-base text-gray-900">{template.name}</CardTitle>
+                        <p className="text-xs text-gray-500 capitalize">
                           {categoryLabels[template.category]} • {template.language.toUpperCase()}
                         </p>
                       </div>
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-600 hover:text-gray-900 hover:bg-gray-100">
                           <MoreHorizontal className="w-4 h-4" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
+                        <DropdownMenuItem className="text-gray-700">
                           <Eye className="w-4 h-4 mr-2" />
                           Preview
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem className="text-gray-700">
                           <Edit className="w-4 h-4 mr-2" />
                           Edit
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem className="text-gray-700">
                           <Copy className="w-4 h-4 mr-2" />
                           Duplicate
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="text-destructive">
+                        <DropdownMenuItem className="text-red-600">
                           <Trash2 className="w-4 h-4 mr-2" />
                           Delete
                         </DropdownMenuItem>
@@ -276,13 +276,13 @@ export function TemplatesList({ templates, tenantId }: TemplatesListProps) {
                     </DropdownMenu>
                   </div>
                 </CardHeader>
-                <CardContent className="pt-0">
+                <CardContent className="pt-3">
                   <div className="flex items-center justify-between">
-                    <Badge className={cn("capitalize gap-1", statusColors[template.status])}>
+                    <Badge className={cn("capitalize gap-1 px-2 py-1", statusColors[template.status])}>
                       <StatusIcon className="w-3 h-3" />
                       {template.status}
                     </Badge>
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-xs text-gray-500">
                       {formatDistanceToNow(new Date(template.updated_at), { addSuffix: true })}
                     </span>
                   </div>

@@ -92,40 +92,41 @@ export function AgentProfile() {
   return (
     <div className="space-y-6">
       {/* Agent Identity */}
-      <Card className="bg-card border-border">
-        <CardHeader>
+      <Card className="bg-white border border-gray-200 shadow-sm">
+        <CardHeader className="bg-gray-50 border-b border-gray-100">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-primary/10">
-              <Bot className="w-5 h-5 text-primary" />
+            <div className="p-2 rounded-lg bg-blue-100">
+              <Bot className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <CardTitle>Agent Identity</CardTitle>
-              <CardDescription>Define your AI agent's personality and role</CardDescription>
+              <CardTitle className="text-gray-900">Agent Identity</CardTitle>
+              <CardDescription className="text-gray-600">Define your AI agent's personality and role</CardDescription>
             </div>
           </div>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Agent Name</Label>
+              <Label htmlFor="name" className="text-gray-700">Agent Name</Label>
               <Input
                 id="name"
                 placeholder="e.g., Emma, Alex, Support Bot"
                 value={profile.name}
                 onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+                className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
               />
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-gray-500">
                 This name will be used when the agent introduces itself
               </p>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="industry">Industry</Label>
+              <Label htmlFor="industry" className="text-gray-700">Industry</Label>
               <Select
                 value={profile.industry}
                 onValueChange={(value) => setProfile({ ...profile, industry: value })}
               >
-                <SelectTrigger id="industry">
+                <SelectTrigger id="industry" className="border-gray-300">
                   <SelectValue placeholder="Select industry" />
                 </SelectTrigger>
                 <SelectContent>
@@ -140,15 +141,16 @@ export function AgentProfile() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description">Business Description</Label>
+            <Label htmlFor="description" className="text-gray-700">Business Description</Label>
             <Textarea
               id="description"
               placeholder="Describe your business and what your agent should know about it..."
               value={profile.description}
               onChange={(e) => setProfile({ ...profile, description: e.target.value })}
               rows={4}
+              className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-gray-500">
               Help the AI understand your business context for better responses
             </p>
           </div>
@@ -156,19 +158,19 @@ export function AgentProfile() {
       </Card>
 
       {/* Tone of Voice */}
-      <Card className="bg-card border-border">
-        <CardHeader>
+      <Card className="bg-white border border-gray-200 shadow-sm">
+        <CardHeader className="bg-gray-50 border-b border-gray-100">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-chart-2/10">
-              <Building2 className="w-5 h-5 text-chart-2" />
+            <div className="p-2 rounded-lg bg-green-100">
+              <Building2 className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <CardTitle>Tone of Voice</CardTitle>
-              <CardDescription>Set how your agent communicates with customers</CardDescription>
+              <CardTitle className="text-gray-900">Tone of Voice</CardTitle>
+              <CardDescription className="text-gray-600">Set how your agent communicates with customers</CardDescription>
             </div>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {tones.map((tone) => (
               <button
@@ -176,12 +178,12 @@ export function AgentProfile() {
                 onClick={() => setProfile({ ...profile, tone: tone.value })}
                 className={`p-4 rounded-lg border text-left transition-colors ${
                   profile.tone === tone.value
-                    ? "border-primary bg-primary/5"
-                    : "border-border hover:border-primary/50"
+                    ? "border-blue-500 bg-blue-50"
+                    : "border-gray-200 hover:border-blue-300"
                 }`}
               >
-                <p className="font-medium text-foreground">{tone.label}</p>
-                <p className="text-sm text-muted-foreground">{tone.description}</p>
+                <p className="font-medium text-gray-900">{tone.label}</p>
+                <p className="text-sm text-gray-600">{tone.description}</p>
               </button>
             ))}
           </div>
@@ -189,26 +191,26 @@ export function AgentProfile() {
       </Card>
 
       {/* Language & Localization */}
-      <Card className="bg-card border-border">
-        <CardHeader>
+      <Card className="bg-white border border-gray-200 shadow-sm">
+        <CardHeader className="bg-gray-50 border-b border-gray-100">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-chart-3/10">
-              <Globe className="w-5 h-5 text-chart-3" />
+            <div className="p-2 rounded-lg bg-purple-100">
+              <Globe className="w-5 h-5 text-purple-600" />
             </div>
             <div>
-              <CardTitle>Language Settings</CardTitle>
-              <CardDescription>Configure language preferences</CardDescription>
+              <CardTitle className="text-gray-900">Language Settings</CardTitle>
+              <CardDescription className="text-gray-600">Configure language preferences</CardDescription>
             </div>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-6">
           <div className="space-y-2">
-            <Label htmlFor="language">Default Language</Label>
+            <Label htmlFor="language" className="text-gray-700">Default Language</Label>
             <Select
               value={profile.language}
               onValueChange={(value) => setProfile({ ...profile, language: value })}
             >
-              <SelectTrigger id="language" className="w-full md:w-64">
+              <SelectTrigger id="language" className="w-full md:w-64 border-gray-300">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -219,7 +221,7 @@ export function AgentProfile() {
                 ))}
               </SelectContent>
             </Select>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-gray-500">
               The agent can auto-detect and respond in the customer's language
             </p>
           </div>
@@ -227,43 +229,45 @@ export function AgentProfile() {
       </Card>
 
       {/* Business Hours */}
-      <Card className="bg-card border-border">
-        <CardHeader>
+      <Card className="bg-white border border-gray-200 shadow-sm">
+        <CardHeader className="bg-gray-50 border-b border-gray-100">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-chart-4/10">
-              <Clock className="w-5 h-5 text-chart-4" />
+            <div className="p-2 rounded-lg bg-orange-100">
+              <Clock className="w-5 h-5 text-orange-600" />
             </div>
             <div>
-              <CardTitle>Business Hours</CardTitle>
-              <CardDescription>Define when your business operates</CardDescription>
+              <CardTitle className="text-gray-900">Business Hours</CardTitle>
+              <CardDescription className="text-gray-600">Define when your business operates</CardDescription>
             </div>
           </div>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 p-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-2">
-              <Label>Start Time</Label>
+              <Label className="text-gray-700">Start Time</Label>
               <Input
                 type="time"
                 value={profile.businessHoursStart}
                 onChange={(e) => setProfile({ ...profile, businessHoursStart: e.target.value })}
+                className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
             <div className="space-y-2">
-              <Label>End Time</Label>
+              <Label className="text-gray-700">End Time</Label>
               <Input
                 type="time"
                 value={profile.businessHoursEnd}
                 onChange={(e) => setProfile({ ...profile, businessHoursEnd: e.target.value })}
+                className="border-gray-300 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
             <div className="space-y-2">
-              <Label>Timezone</Label>
+              <Label className="text-gray-700">Timezone</Label>
               <Select
                 value={profile.timezone}
                 onValueChange={(value) => setProfile({ ...profile, timezone: value })}
               >
-                <SelectTrigger>
+                <SelectTrigger className="border-gray-300">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -280,13 +284,13 @@ export function AgentProfile() {
           </div>
 
           <div className="space-y-2">
-            <Label>Working Days</Label>
+            <Label className="text-gray-700">Working Days</Label>
             <div className="flex flex-wrap gap-2">
               {days.map((day) => (
                 <Badge
                   key={day}
                   variant={profile.workDays.includes(day) ? "default" : "outline"}
-                  className="cursor-pointer px-3 py-1.5"
+                  className={`cursor-pointer px-3 py-1.5 ${profile.workDays.includes(day) ? 'bg-blue-100 text-blue-800' : 'bg-white text-gray-700 border-gray-300'}`}
                   onClick={() => toggleWorkDay(day)}
                 >
                   {day}
