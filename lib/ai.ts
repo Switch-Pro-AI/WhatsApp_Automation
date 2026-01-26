@@ -1,8 +1,18 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let openai: OpenAI | null = null;
+
+function getOpenAIClient(): OpenAI {
+  if (!openai) {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY is not configured");
+    }
+    openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  }
+  return openai;
+}
 
 export interface AIConfig {
   agentName: string;
@@ -23,9 +33,7 @@ export async function generateAIResponse(
   config: AIConfig
 ): Promise<string> {
   try {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error("OPENAI_API_KEY is not configured");
-    }
+    const client = getOpenAIClient();
 
     // Build system prompt
     let systemPrompt = `You are ${config.agentName || "an AI assistant"}`;
@@ -76,7 +84,7 @@ export async function generateAIResponse(
     messages.push({ role: "user", content: message });
 
     // Call OpenAI API
-    const completion = await openai.chat.completions.create({
+    const completion = await client.chat.completions.create({
       model: "gpt-4",
       messages: messages,
       max_tokens: 1000,
