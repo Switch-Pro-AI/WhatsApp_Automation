@@ -11,7 +11,7 @@ export async function GET(request: Request) {
     }
 
     const agent = await queryOne(
-      `SELECT config FROM ai_agents WHERE tenant_id = $1 AND is_default = true`,
+      `SELECT config FROM ai_assistants WHERE tenant_id = $1 AND is_default = true`,
       [session.tenantId]
     );
 

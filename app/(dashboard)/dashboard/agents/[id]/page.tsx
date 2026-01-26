@@ -36,30 +36,49 @@ export default function AgentEditorPage() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (isNew) {
-      createNewAgent();
-    } else {
+    if (!isNew) {
       fetchAgent();
+    } else {
+      // Don't automatically create an agent when navigating to /new
+      // Instead, we'll create a default one when the user clicks save
+      setAgent({
+        id: 'new',
+        name: 'New Agent',
+        config: {},
+        is_default: false
+      });
+      setLoading(false);
     }
   }, [agentId]);
 
-  const createNewAgent = async () => {
+  const createNewAgent = async (name: string = 'New Agent') => {
     try {
       const res = await fetch('/api/agents', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: 'New Agent', config: {} })
+        body: JSON.stringify({ name, config: {} })
       });
       if (res.ok) {
         const data = await res.json();
-        router.push(`/dashboard/agents/${data.agent.id}`);
+        // Update the current agent with the new ID
+        setAgent({
+          ...data.agent,
+          config: {}
+        });
+        // Update the URL to the new agent's page
+        router.replace(`/dashboard/agents/${data.agent.id}`);
+        toast({ title: "Success", description: "Agent created successfully" });
+        return data.agent.id;
       } else {
+        const errorText = await res.text();
+        console.error("Failed to create agent:", errorText);
         toast({ title: "Error", description: "Failed to create agent" });
+        return null;
       }
     } catch (error) {
+      console.error("Error creating agent:", error);
       toast({ title: "Error", description: "Failed to create agent" });
-    } finally {
-      setLoading(false);
+      return null;
     }
   };
 
@@ -84,18 +103,38 @@ export default function AgentEditorPage() {
   const handleSaveAll = async () => {
     if (!agent) return;
     setSaving(true);
+
     try {
-      const res = await fetch(`/api/agents/${agent.id}`, {
+      let agentIdToUse = agent.id;
+
+      // If this is a new agent (id is 'new'), create it first
+      if (agent.id === 'new') {
+        const newAgentId = await createNewAgent(agent.name);
+        if (!newAgentId) {
+          return; // Error occurred during creation
+        }
+        agentIdToUse = newAgentId;
+      }
+
+      // Update the agent with the current config
+      const res = await fetch(`/api/agents/${agentIdToUse}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: agent.name, config: agent.config })
+        body: JSON.stringify({ name: agent.name, config: agent.config, is_default: agent.is_default })
       });
+
       if (res.ok) {
+        const data = await res.json();
+        // Update the agent state with the saved data
+        setAgent(data.agent);
         toast({ title: "Success", description: "Agent saved" });
       } else {
+        const errorText = await res.text();
+        console.error("Failed to save agent:", errorText);
         toast({ title: "Error", description: "Failed to save agent" });
       }
     } catch (error) {
+      console.error("Error saving agent:", error);
       toast({ title: "Error", description: "Failed to save agent" });
     } finally {
       setSaving(false);
@@ -118,7 +157,7 @@ export default function AgentEditorPage() {
         </div>
         <div className="flex gap-2">
           <Button onClick={handleSaveAll} disabled={saving}>
-            {saving ? 'Saving...' : 'Save All'}
+            {saving ? 'Saving...' : 'Save Agent'}
           </Button>
           <Button variant="outline" onClick={() => router.push('/dashboard/agents')}>
             Back to Agents
