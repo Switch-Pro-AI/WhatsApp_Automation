@@ -167,37 +167,37 @@ export function ResponseTemplates({ agentId, initialConfig = {}, onUpdate }: { a
 
   return (
     <div className="space-y-6">
-      <Card className="bg-white border border-gray-200 shadow-sm">
-        <CardHeader className="bg-gray-50 border-b border-gray-100">
-          <CardTitle className="text-gray-900">Response Templates</CardTitle>
-          <CardDescription className="text-gray-600">
+      <Card className="shadow-sm">
+        <CardHeader>
+          <CardTitle>Response Templates</CardTitle>
+          <CardDescription>
             Customize the messages your AI agent sends in different situations. Use{" "}
             {"{{placeholders}}"} for dynamic content.
           </CardDescription>
         </CardHeader>
         <CardContent className="p-6">
-          <div className="rounded-lg border border-gray-200 p-4 bg-gray-50">
-            <p className="text-sm font-medium text-gray-900 mb-2">Available Placeholders</p>
+          <div className="rounded-lg border p-4">
+            <p className="text-sm font-medium mb-2">Available Placeholders</p>
             <div className="flex flex-wrap gap-2 text-xs">
-              <code className="px-2 py-1 rounded bg-gray-100 text-gray-700">
+              <code className="px-2 py-1 rounded">
                 {"{{name}}"}
               </code>
-              <code className="px-2 py-1 rounded bg-gray-100 text-gray-700">
+              <code className="px-2 py-1 rounded">
                 {"{{business}}"}
               </code>
-              <code className="px-2 py-1 rounded bg-gray-100 text-gray-700">
+              <code className="px-2 py-1 rounded">
                 {"{{agent}}"}
               </code>
-              <code className="px-2 py-1 rounded bg-gray-100 text-gray-700">
+              <code className="px-2 py-1 rounded">
                 {"{{date}}"}
               </code>
-              <code className="px-2 py-1 rounded bg-gray-100 text-gray-700">
+              <code className="px-2 py-1 rounded">
                 {"{{time}}"}
               </code>
-              <code className="px-2 py-1 rounded bg-gray-100 text-gray-700">
+              <code className="px-2 py-1 rounded">
                 {"{{email}}"}
               </code>
-              <code className="px-2 py-1 rounded bg-gray-100 text-gray-700">
+              <code className="px-2 py-1 rounded">
                 {"{{phone}}"}
               </code>
             </div>
@@ -209,27 +209,27 @@ export function ResponseTemplates({ agentId, initialConfig = {}, onUpdate }: { a
         const Icon = template.icon
 
         return (
-          <Card key={template.id} className="bg-white border border-gray-200 shadow-sm">
-            <CardHeader className="bg-gray-50 border-b border-gray-100">
+          <Card key={template.id} className="shadow-sm">
+            <CardHeader>
               <div className="flex items-center gap-3">
                 <div className={`p-2 rounded-lg ${template.color}`}>
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <CardTitle className="text-base text-gray-900">{template.name}</CardTitle>
-                  <CardDescription className="text-gray-600">{template.description}</CardDescription>
+                  <CardTitle className="text-base">{template.name}</CardTitle>
+                  <CardDescription>{template.description}</CardDescription>
                 </div>
               </div>
             </CardHeader>
             <CardContent className="p-6">
               <div className="space-y-2">
-                <Label htmlFor={template.id} className="text-gray-700">Message Template</Label>
+                <Label htmlFor={template.id}>Message Template</Label>
                 <Textarea
                   id={template.id}
                   value={template.content}
                   onChange={(e) => updateTemplate(template.id, e.target.value)}
                   rows={3}
-                  className="resize-none border-gray-300 focus:border-blue-500 focus:ring-blue-500 text-gray-900 bg-white"
+                  className="resize-none"
                 />
               </div>
             </CardContent>

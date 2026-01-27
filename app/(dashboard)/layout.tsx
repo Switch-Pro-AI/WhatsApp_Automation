@@ -10,7 +10,7 @@ export default async function DashboardLayout({
   children: React.ReactNode
 }) {
   const user = await getCurrentUser()
-  
+
   if (!user) {
     redirect("/login")
   }
@@ -22,7 +22,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100">
+    <div className="flex h-screen">
       <DashboardSidebar user={user} tenant={tenant} />
       <div className="flex-1 flex flex-col overflow-hidden">
         <DashboardHeader user={user} tenant={tenant} />
