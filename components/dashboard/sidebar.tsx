@@ -41,6 +41,11 @@ const bottomNavItems = [
   { icon: HelpCircle, label: "Help", href: "/dashboard/help" },
 ]
 
+const policyNavItems = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" },
+]
+
 export function DashboardSidebar({ tenant }: DashboardSidebarProps) {
   const pathname = usePathname()
 
@@ -115,6 +120,17 @@ export function DashboardSidebar({ tenant }: DashboardSidebarProps) {
             </Link>
           )
         })}
+        <div className="pt-2 mt-2 border-t">
+          {policyNavItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </aside>
   )

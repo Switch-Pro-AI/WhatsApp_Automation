@@ -529,9 +529,13 @@ export default function LandingPage() {
                 className="h-12 w-auto object-contain"
               />
             </div>
-            <p className="text-sm text-gray-600">
-              2026 SwitchPro. All rights reserved.
-            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/privacy-policy" className="text-sm text-gray-600 hover:underline">Privacy Policy</Link>
+              <Link href="/terms-of-service" className="text-sm text-gray-600 hover:underline">Terms of Service</Link>
+              <p className="text-sm text-gray-600">
+                2026 SwitchPro. All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </footer>
