@@ -250,12 +250,23 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
 
     // Check if we should auto-respond with AI
     try {
-      // First, try to find an agent associated with this tenant
+      // First, try to find the default agent for this tenant
       let agentResult = await query(`
-        SELECT id, config FROM ai_agents
-        WHERE tenant_id = $1 AND is_default = true
+        SELECT aa.id, aa.config
+        FROM ai_agents aa
+        JOIN tenants t ON aa.id = t.default_agent_id
+        WHERE t.id = $1
         LIMIT 1
       `, [tenantId]);
+
+      // If no agent found via tenant default, fall back to looking for is_default = true
+      if (agentResult.length === 0) {
+        agentResult = await query(`
+          SELECT id, config FROM ai_agents
+          WHERE tenant_id = $1 AND is_default = true
+          LIMIT 1
+        `, [tenantId]);
+      }
 
       const agentConfig = agentResult.length > 0 ? (agentResult[0] as { config: any }).config : null;
 
