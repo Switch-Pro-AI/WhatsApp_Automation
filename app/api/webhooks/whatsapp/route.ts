@@ -251,12 +251,14 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
     // Check if we should auto-respond with AI
     try {
       // Find the default agent for this tenant
-      // First try to find by is_default = true (fallback method)
+      // First try to find by is_default = true (preferred method)
       let agentResult = await query(`
         SELECT id, name, config FROM ai_agents
         WHERE tenant_id = $1 AND is_default = true
         LIMIT 1
       `, [tenantId]);
+
+      console.log(`Tenant ${tenantId}: Found ${agentResult.length} default agents`);
 
       // If no default agent found, try to find any agent for the tenant
       if (agentResult.length === 0) {
@@ -266,6 +268,7 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
           ORDER BY created_at DESC
           LIMIT 1
         `, [tenantId]);
+        console.log(`Tenant ${tenantId}: Found ${agentResult.length} fallback agents`);
       }
 
       let agentConfig = agentResult.length > 0 ? (agentResult[0] as { config: any, name: string }).config : null;
@@ -278,7 +281,15 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
         }
         if (!agentConfig.profile.name) {
           agentConfig.profile.name = agentName;
+          console.log(`Tenant ${tenantId}: Set agent name '${agentName}' in config profile`);
         }
+      }
+
+      // Log agent configuration status
+      console.log(`Tenant ${tenantId}: Agent config available: ${!!agentConfig}`);
+      if (agentConfig) {
+        console.log(`Tenant ${tenantId}: Agent name in config: ${agentConfig.profile?.name || 'not set'}`);
+        console.log(`Tenant ${tenantId}: Auto-respond enabled: ${shouldUseAIResponse(agentConfig)}`);
       }
 
       // Check if AI auto-respond is enabled using the proper function
@@ -306,6 +317,14 @@ async function handleIncomingMessage(payload: IncomingMessagePayload) {
         (!businessHoursOnly || isBusinessHours) &&
         message.type === "text" &&
         content;
+
+      console.log(`Tenant ${tenantId}: Should auto-respond: ${shouldAutoRespond}`);
+      console.log(`  - AI enabled in config: ${shouldUseAI}`);
+      console.log(`  - AI enabled for conversation: ${isAIEnabledForConversation}`);
+      console.log(`  - Business hours only: ${businessHoursOnly}`);
+      console.log(`  - Is business hours: ${isBusinessHours}`);
+      console.log(`  - Message type is text: ${message.type === "text"}`);
+      console.log(`  - Has content: ${!!content}`);
 
       if (shouldAutoRespond) {
         console.log("Generating AI response for:", content);
