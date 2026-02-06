@@ -1,9 +1,12 @@
 "use client"
 
 import { useState } from "react"
+import { Button } from "@/components/ui/button"
 import { ConversationList } from "./conversation-list"
 import { ChatPanel } from "./chat-panel"
 import { ConversationDetails } from "./conversation-details"
+import { Send } from "lucide-react"
+import { NewConversation } from "./new-conversation"
 
 interface Conversation {
   id: string
@@ -38,11 +41,12 @@ interface InboxLayoutProps {
   agents: Agent[]
   quickReplies: QuickReply[]
   tenantId: string
+  initialView?: 'new-conversation' | 'inbox'
 }
 
-export function InboxLayout({ conversations, agents, quickReplies, tenantId }: InboxLayoutProps) {
+export function InboxLayout({ conversations, agents, quickReplies, tenantId, initialView }: InboxLayoutProps) {
   const [selectedConversationId, setSelectedConversationId] = useState<string | null>(
-    conversations[0]?.id || null
+    (initialView === 'new-conversation' || initialView === undefined) ? null : conversations[0]?.id || null
   )
   const [showDetails, setShowDetails] = useState(false)
   const [filter, setFilter] = useState<"all" | "open" | "pending" | "resolved">("all")
@@ -65,8 +69,15 @@ export function InboxLayout({ conversations, agents, quickReplies, tenantId }: I
         onFilterChange={setFilter}
       />
 
-      {/* Chat Panel */}
-      {selectedConversation ? (
+      {/* Chat Panel or New Conversation */}
+      {initialView === 'new-conversation' && !selectedConversationId ? (
+        <NewConversation
+          tenantId={tenantId}
+          onConversationCreated={(conversationId) => {
+            setSelectedConversationId(conversationId);
+          }}
+        />
+      ) : selectedConversation ? (
         <ChatPanel
           conversation={selectedConversation}
           quickReplies={quickReplies}
@@ -75,9 +86,38 @@ export function InboxLayout({ conversations, agents, quickReplies, tenantId }: I
           tenantId={tenantId}
         />
       ) : (
-        <div className="flex-1 flex items-center justify-center bg-card">
-          <div className="text-center">
-            <p className="text-muted-foreground">Select a conversation to start chatting</p>
+        <div className="flex-1 flex flex-col bg-card">
+          {/* Empty State Header */}
+          <div className="h-16 px-4 border-b border-border flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <h3 className="font-medium text-foreground">New Conversation</h3>
+            </div>
+          </div>
+          
+          {/* Empty State Content */}
+          <div className="flex-1 flex flex-col items-center justify-center p-8">
+            <div className="text-center max-w-md">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <Send className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Start a new conversation</h3>
+              <p className="text-muted-foreground mb-6">
+                Select a contact from the list to start a conversation or create a new contact.
+              </p>
+              <div className="flex gap-2 justify-center">
+                <Button onClick={() => {
+                  // If there are conversations, select the first one
+                  if (conversations.length > 0) {
+                    setSelectedConversationId(conversations[0].id);
+                  }
+                }}>
+                  Browse Contacts
+                </Button>
+                <Button variant="outline" onClick={() => window.location.href = '/dashboard/contacts?new=true'}>
+                  Add Contact
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       )}

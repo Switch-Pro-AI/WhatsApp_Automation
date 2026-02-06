@@ -18,7 +18,7 @@ async function getInboxData(tenantId: string) {
     last_message_type: string | null
     unread_count: string
   }>(
-    `SELECT 
+    `SELECT
       c.id,
       c.contact_id,
       COALESCE(co.name, co.phone_number) as contact_name,
@@ -55,18 +55,19 @@ async function getInboxData(tenantId: string) {
   return { conversations, agents, quickReplies }
 }
 
-export default async function InboxPage() {
+export default async function InboxPage({ searchParams }: { searchParams?: { new?: string } }) {
   const tenant = await getCurrentTenant()
   if (!tenant) redirect("/login")
 
   const { conversations, agents, quickReplies } = await getInboxData(tenant.id)
 
   return (
-    <InboxLayout 
-      conversations={conversations} 
+    <InboxLayout
+      conversations={conversations}
       agents={agents}
       quickReplies={quickReplies}
       tenantId={tenant.id}
+      initialView={searchParams?.new ? 'new-conversation' : 'inbox'}
     />
   )
 }

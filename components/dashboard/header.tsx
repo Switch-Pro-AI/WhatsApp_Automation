@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import type { User, Tenant } from "@/lib/auth"
 import { Button } from "@/components/ui/button"
@@ -15,15 +15,24 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Search, Bell, Plus, LogOut, User as UserIcon, Settings } from "lucide-react"
+import useSWR from "swr"
 
 interface DashboardHeaderProps {
   user: User
   tenant: Tenant
 }
 
+// SWR fetcher function
+const fetcher = (url: string) => fetch(url).then(res => res.json());
+
 export function DashboardHeader({ user }: DashboardHeaderProps) {
   const router = useRouter()
   const [isLoggingOut, setIsLoggingOut] = useState(false)
+  
+  // Fetch notification count
+  const { data: notifications, error: notificationError, mutate } = useSWR('/api/notifications', fetcher, {
+    refreshInterval: 30000, // Refresh every 30 seconds
+  });
 
   async function handleLogout() {
     setIsLoggingOut(true)
@@ -35,6 +44,12 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
       setIsLoggingOut(false)
     }
   }
+
+  // Refresh notifications when navigating to inbox
+  useEffect(() => {
+    // In Next.js 13+ with App Router, we don't have router.events
+    // Instead, we rely on the refreshInterval in SWR
+  }, []);
 
   return (
     <header className="h-16 border-b flex items-center justify-between px-6">
@@ -51,15 +66,27 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
 
       {/* Actions */}
       <div className="flex items-center gap-3">
-        <Button size="sm" className="gap-2">
+        <Button size="sm" className="gap-2" onClick={() => router.push("/dashboard/inbox?new=true")}>
           <Plus className="w-4 h-4" />
           New Message
         </Button>
 
         {/* Notifications */}
-        <Button variant="ghost" size="icon" className="relative">
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="relative" 
+          onClick={() => {
+            router.push("/dashboard/inbox");
+            mutate(); // Refresh notification count after navigation
+          }}
+        >
           <Bell className="w-5 h-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full" />
+          {notifications?.total_notifications > 0 && (
+            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+              {notifications.total_notifications > 99 ? '99+' : notifications.total_notifications}
+            </span>
+          )}
         </Button>
 
         {/* User Menu */}
