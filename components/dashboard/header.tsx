@@ -14,25 +14,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Search, Bell, Plus, LogOut, User as UserIcon, Settings } from "lucide-react"
-import useSWR from "swr"
+import { Search, Plus, LogOut, User as UserIcon, Settings } from "lucide-react"
+import { NotificationDropdown } from "@/components/common/notification-dropdown"
 
 interface DashboardHeaderProps {
   user: User
   tenant: Tenant
 }
 
-// SWR fetcher function
-const fetcher = (url: string) => fetch(url).then(res => res.json());
-
-export function DashboardHeader({ user }: DashboardHeaderProps) {
+export function DashboardHeader({ user, tenant }: DashboardHeaderProps) {
   const router = useRouter()
   const [isLoggingOut, setIsLoggingOut] = useState(false)
-  
-  // Fetch notification count
-  const { data: notifications, error: notificationError, mutate } = useSWR('/api/notifications', fetcher, {
-    refreshInterval: 30000, // Refresh every 30 seconds
-  });
 
   async function handleLogout() {
     setIsLoggingOut(true)
@@ -44,12 +36,6 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
       setIsLoggingOut(false)
     }
   }
-
-  // Refresh notifications when navigating to inbox
-  useEffect(() => {
-    // In Next.js 13+ with App Router, we don't have router.events
-    // Instead, we rely on the refreshInterval in SWR
-  }, []);
 
   return (
     <header className="h-16 border-b flex items-center justify-between px-6">
@@ -72,22 +58,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
         </Button>
 
         {/* Notifications */}
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="relative" 
-          onClick={() => {
-            router.push("/dashboard/inbox");
-            mutate(); // Refresh notification count after navigation
-          }}
-        >
-          <Bell className="w-5 h-5" />
-          {notifications?.total_notifications > 0 && (
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
-              {notifications.total_notifications > 99 ? '99+' : notifications.total_notifications}
-            </span>
-          )}
-        </Button>
+        <NotificationDropdown tenantId={tenant.id} />
 
         {/* User Menu */}
         <DropdownMenu>
